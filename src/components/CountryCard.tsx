@@ -18,7 +18,6 @@ const CountryCard = ({ country, onClickCardHandler }: Props) => {
 
 const StCountryCard = styled.li`
   width: 200px;
-  /* border: 1px solid black; */
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
