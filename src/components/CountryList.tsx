@@ -4,19 +4,23 @@ import { useEffect, useState } from "react";
 import { getCountries } from "../api/api.country";
 import CountryCard from "./CountryCard";
 
-const CountryList = () => {
+const CountryList: React.FC = () => {
   const [countryList, setCountryList] = useState<Country[]>([]);
   const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
 
   useEffect(() => {
-    const getCountriesHandler = async () => {
-      const data = await getCountries();
-      setCountryList(data);
+    const getCountriesHandler = async (): Promise<void> => {
+      try {
+        const data: Country[] = await getCountries();
+        setCountryList(data);
+      } catch (error) {
+        alert(error);
+      }
     };
     getCountriesHandler();
   }, []);
 
-  const onClickCardHandler = (name: string) => {
+  const onClickCardHandler = (name: string): void => {
     const isCountrySelected = selectedCountries.find(
       (country: Country) => country.name.common === name
     );
@@ -26,7 +30,7 @@ const CountryList = () => {
         (country: Country) => country.name.common === name
       )[0];
 
-      setSelectedCountries((prev) => [...prev, selectedCountry]);
+      setSelectedCountries((prev) => [selectedCountry, ...prev]);
 
       setCountryList(
         countryList.filter((country: Country) => country.name.common !== name)
@@ -36,7 +40,7 @@ const CountryList = () => {
         (country: Country) => country.name.common === name
       )[0];
 
-      setCountryList((prev) => [...prev, selectedCountry]);
+      setCountryList((prev) => [selectedCountry, ...prev]);
 
       setSelectedCountries(
         selectedCountries.filter(

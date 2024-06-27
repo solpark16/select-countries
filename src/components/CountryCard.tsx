@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { Country } from "../types/types";
 
-type Props = {
+interface CountryCardProps {
   country: Country;
   onClickCardHandler: (name: string) => void;
-};
+}
 
-const CountryCard = ({ country, onClickCardHandler }: Props) => {
+const CountryCard: React.FC<CountryCardProps> = ({
+  country,
+  onClickCardHandler,
+}) => {
   return (
     <StCountryCard onClick={() => onClickCardHandler(country.name.common)}>
       <img src={country.flags.svg} />
@@ -32,7 +35,9 @@ const StCountryCard = styled.li`
     margin: 0 auto;
   }
 `;
+
 const StCountryName = styled.p`
   font-size: 20px;
 `;
+
 export default CountryCard;
