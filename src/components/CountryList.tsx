@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Country } from "../types/types";
+import { Country } from "../types/type.country";
 import { useEffect, useState } from "react";
 import { getCountries } from "../api/api.country";
 import CountryCard from "./CountryCard";
