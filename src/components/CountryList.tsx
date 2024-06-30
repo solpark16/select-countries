@@ -52,7 +52,7 @@ const CountryList: React.FC = () => {
 
   return (
     <StCountryListBox>
-      <StCountryListTitle>Your Favorite Countries</StCountryListTitle>
+      <StCountryListTitle>Favorite Countries</StCountryListTitle>
       <StCountryList>
         {selectedCountries.map((country: Country) => {
           return (
@@ -64,7 +64,7 @@ const CountryList: React.FC = () => {
           );
         })}
       </StCountryList>
-      <StCountryListTitle>All Countries</StCountryListTitle>
+      <StCountryListTitle>Countries</StCountryListTitle>
       <StCountryList>
         {countryList.map((country: Country) => {
           return (
